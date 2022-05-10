@@ -15,37 +15,50 @@ class PostContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(vertical: 5),
-      padding: const EdgeInsets.symmetric(vertical: 8),
-      color: Colors.white,
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                _PostHeader(post: post),
-                const SizedBox(height: 4),
-                Text(post.caption),
-                post.imageUrl != ' '
-                    ? const SizedBox.shrink()
-                    : const SizedBox(height: 6),
-              ],
+    final bool isDesktop = Responsive.isDesktop(context);
+    return Card(
+      clipBehavior: Clip.antiAlias,
+      margin: EdgeInsets.symmetric(
+        horizontal: isDesktop ? 5 : 0,
+        vertical: 5,
+      ),
+      elevation: isDesktop ? 1 : 0,
+      shape: isDesktop
+          ? RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            )
+          : null,
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 8),
+        color: Colors.white,
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  _PostHeader(post: post),
+                  const SizedBox(height: 4),
+                  Text(post.caption),
+                  post.imageUrl != ' '
+                      ? const SizedBox.shrink()
+                      : const SizedBox(height: 6),
+                ],
+              ),
             ),
-          ),
-          post.imageUrl != ' '
-              ? Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8.0),
-                  child: CachedNetworkImage(imageUrl: post.imageUrl),
-                )
-              : const SizedBox.shrink(),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12),
-            child: _PostStats(post: post),
-          ),
-        ],
+            post.imageUrl != ' '
+                ? Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8.0),
+                    child: CachedNetworkImage(imageUrl: post.imageUrl),
+                  )
+                : const SizedBox.shrink(),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12),
+              child: _PostStats(post: post),
+            ),
+          ],
+        ),
       ),
     );
   }

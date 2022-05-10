@@ -47,7 +47,7 @@ class CustomTabBar extends StatelessWidget {
                     size: 30,
                   ),
                 ),
-              ))
+              ),)
           .values
           .toList(),
       onTap: onTap,

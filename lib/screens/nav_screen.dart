@@ -20,12 +20,22 @@ class _NavScreenState extends State<NavScreen> {
     Scaffold(),
     Scaffold(),
   ];
+
   final List<IconData> _icons = const [
     Icons.home,
-    Icons.ondemand_video,
+    MdiIcons.accountMultiple,
     MdiIcons.accountCircleOutline,
     MdiIcons.accountGroupOutline,
     MdiIcons.bellOutline,
+    Icons.menu,
+  ];
+
+  final List<IconData> _desktopIcons = const [
+    Icons.home,
+    MdiIcons.accountMultiple,
+    Icons.ondemand_video,
+    MdiIcons.storefrontOutline,
+    MdiIcons.facebookGaming,
     Icons.menu,
   ];
   int _selectedIndex = 0;
@@ -36,12 +46,19 @@ class _NavScreenState extends State<NavScreen> {
     return DefaultTabController(
       length: _icons.length,
       child: Scaffold(
+        floatingActionButton: Responsive.isDesktop(context)
+            ? FloatingActionButton(
+                onPressed: () {},
+                backgroundColor: const Color(0XFF4C4B4F),
+                child: const Icon(MdiIcons.squareEditOutline),
+              )
+            : null,
         appBar: Responsive.isDesktop(context)
             ? PreferredSize(
                 preferredSize: Size(screenSize.width, 100),
                 child: CustomAppBar(
                   currentUser: currentUser,
-                  icon: _icons,
+                  icon: _desktopIcons,
                   selectedIndex: _selectedIndex,
                   onTap: (index) => setState(() => _selectedIndex = index),
                 ),
