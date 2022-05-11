@@ -1,3 +1,4 @@
+import 'package:facebook_ui_clone/config/palette.dart';
 import 'package:facebook_ui_clone/models/models.dart';
 import 'package:facebook_ui_clone/widgets/widgets.dart';
 import 'package:flutter/material.dart';
@@ -38,52 +39,94 @@ class CreatePostContainer extends StatelessWidget {
                     ),
                     child: const TextField(
                       decoration: InputDecoration(
+                        isCollapsed: true,
                         border: InputBorder.none,
                         hintText: 'What\'s on your mind?',
                         contentPadding: EdgeInsets.symmetric(
-                          vertical: 6,
+                          vertical: 10,
                           horizontal: 10,
                         ),
                       ),
                     ),
                   ),
                 ),
+                const SizedBox(width: 10),
+                !isDesktop
+                    ? const Icon(
+                        Icons.photo_library,
+                        color: Colors.green,
+                      )
+                    : const SizedBox.shrink(),
               ],
             ),
             const Divider(height: 10, thickness: 0.5),
             SizedBox(
               height: 40,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  TextButton.icon(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.videocam,
-                      color: Colors.red,
+              child: isDesktop
+                  ? IntrinsicHeight(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          TextButton.icon(
+                            onPressed: () {},
+                            icon: const Icon(
+                              Icons.videocam,
+                              color: Colors.red,
+                            ),
+                            label: const Text('Live'),
+                          ),
+                          const VerticalDivider(thickness: 1),
+                          TextButton.icon(
+                            onPressed: () {},
+                            icon: const Icon(
+                              Icons.photo_library,
+                              color: Colors.green,
+                            ),
+                            label: const Text('Photo'),
+                          ),
+                          const VerticalDivider(thickness: 1),
+                          TextButton.icon(
+                            onPressed: () {},
+                            icon: const Icon(
+                              Icons.emoji_emotions_outlined,
+                              color: Colors.orange,
+                            ),
+                            label: const Text('Emotion'),
+                          ),
+                        ],
+                      ),
+                    )
+                  : SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: const [
+                          RoundedButton(
+                            icon: MdiIcons.moviePlay,
+                            label: 'Movie',
+                            color: Colors.pinkAccent,
+                          ),
+                          SizedBox(width: 10),
+                          RoundedButton(
+                            icon: Icons.video_call,
+                            label: 'Room',
+                            color: Colors.purple,
+                          ),
+                          SizedBox(width: 10),
+                          RoundedButton(
+                            icon: MdiIcons.accountGroup,
+                            label: 'Group',
+                            color: Palette.facebookBlue,
+                          ),
+                          SizedBox(width: 10),
+                          RoundedButton(
+                            icon: Icons.videocam,
+                            label: 'Live',
+                            color: Colors.red,
+                          ),
+                        ],
+                      ),
                     ),
-                    label: const Text('Live'),
-                  ),
-                  const VerticalDivider(width: 8),
-                  TextButton.icon(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.photo_library,
-                      color: Colors.green,
-                    ),
-                    label: const Text('Photo'),
-                  ),
-                  const VerticalDivider(width: 8),
-                  TextButton.icon(
-                    onPressed: () {},
-                    icon: const Icon(
-                      MdiIcons.emoticonExcitedOutline,
-                      color: Colors.orange,
-                    ),
-                    label: const Text('Emotion'),
-                  ),
-                ],
-              ),
             ),
           ],
         ),
@@ -91,3 +134,6 @@ class CreatePostContainer extends StatelessWidget {
     );
   }
 }
+
+
+//Movies: pink, room: purple, group: blue, Live: red
