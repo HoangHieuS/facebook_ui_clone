@@ -8,11 +8,11 @@ class MoreOptionsList extends StatelessWidget {
   final List<List> _moreOptionsList = const [
     [MdiIcons.shieldAccount, Colors.deepPurple, 'COVID-19 Info Center'],
     [MdiIcons.accountMultiple, Colors.cyan, 'Friends'],
-    [MdiIcons.facebookMessenger, Palette.facebookBlue, 'Messenger'],
-    [MdiIcons.flag, Colors.orange, 'Pages'],
-    [MdiIcons.storefront, Palette.facebookBlue, 'Marketplace'],
-    [Icons.ondemand_video, Palette.facebookBlue, 'Watch'],
-    [MdiIcons.calendarStar, Colors.red, 'Events'],
+    [MdiIcons.accountGroup, Colors.cyan, 'Groups'],
+    [MdiIcons.storefront, Colors.cyan, 'Marketplace'],
+    [MdiIcons.youtubeTv, Colors.cyan, 'Watch'],
+    [MdiIcons.clock, Colors.cyan, 'Memory'],
+    [MdiIcons.chevronDownCircle, Colors.black, 'Events'],
   ];
 
   final User currentUser;
@@ -25,7 +25,7 @@ class MoreOptionsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      constraints: BoxConstraints(maxWidth: 280),
+      constraints: const BoxConstraints(maxWidth: 280),
       child: ListView.builder(
         itemCount: 1 + _moreOptionsList.length,
         itemBuilder: (BuildContext content, int index) {
@@ -68,7 +68,15 @@ class _Option extends StatelessWidget {
       onTap: () {},
       child: Row(
         children: [
-          Icon(icon, size: 38, color: color),
+          ShaderMask(
+            shaderCallback: (rect) =>
+                Palette.moreOptionsGradient.createShader(rect),
+            child: Icon(
+              icon,
+              size: 38,
+              color: color,
+            ),
+          ),
           const SizedBox(width: 6),
           Flexible(
             child: Text(

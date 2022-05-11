@@ -1,6 +1,7 @@
 import 'package:facebook_ui_clone/models/models.dart';
 import 'package:facebook_ui_clone/widgets/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class CreatePostContainer extends StatelessWidget {
   final User currentUser;
@@ -28,10 +29,23 @@ class CreatePostContainer extends StatelessWidget {
               children: [
                 ProfileAvatar(imageUrl: currentUser.imageUrl),
                 const SizedBox(width: 8),
-                const Expanded(
-                  child: TextField(
-                    decoration: InputDecoration.collapsed(
-                        hintText: 'What\'s on your mind?'),
+                Expanded(
+                  child: Container(
+                    height: 40,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(50),
+                      color: const Color.fromARGB(60, 110, 107, 107),
+                    ),
+                    child: const TextField(
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                        hintText: 'What\'s on your mind?',
+                        contentPadding: EdgeInsets.symmetric(
+                          vertical: 6,
+                          horizontal: 10,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
               ],
@@ -63,10 +77,10 @@ class CreatePostContainer extends StatelessWidget {
                   TextButton.icon(
                     onPressed: () {},
                     icon: const Icon(
-                      Icons.video_call,
-                      color: Colors.purple,
+                      MdiIcons.emoticonExcitedOutline,
+                      color: Colors.orange,
                     ),
-                    label: const Text('Room'),
+                    label: const Text('Emotion'),
                   ),
                 ],
               ),

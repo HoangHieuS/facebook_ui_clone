@@ -12,7 +12,7 @@ class NavScreen extends StatefulWidget {
 }
 
 class _NavScreenState extends State<NavScreen> {
-  final List<Widget> _screens = [
+  final List<Widget> _screens = const [
     HomeScreen(),
     Scaffold(),
     Scaffold(),
@@ -25,7 +25,7 @@ class _NavScreenState extends State<NavScreen> {
     Icons.home,
     MdiIcons.accountMultiple,
     MdiIcons.accountCircleOutline,
-    MdiIcons.accountGroupOutline,
+    MdiIcons.newspaperVariantOutline,
     MdiIcons.bellOutline,
     Icons.menu,
   ];
@@ -36,13 +36,14 @@ class _NavScreenState extends State<NavScreen> {
     Icons.ondemand_video,
     MdiIcons.storefrontOutline,
     MdiIcons.facebookGaming,
-    Icons.menu,
+    MdiIcons.newspaperVariantOutline,
   ];
   int _selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     final Size screenSize = MediaQuery.of(context).size;
+    final isDesktop = Responsive.isDesktop(context);
     return DefaultTabController(
       length: _icons.length,
       child: Scaffold(
@@ -53,7 +54,7 @@ class _NavScreenState extends State<NavScreen> {
                 child: const Icon(MdiIcons.squareEditOutline),
               )
             : null,
-        appBar: Responsive.isDesktop(context)
+        appBar: isDesktop
             ? PreferredSize(
                 preferredSize: Size(screenSize.width, 100),
                 child: CustomAppBar(
@@ -68,7 +69,7 @@ class _NavScreenState extends State<NavScreen> {
           index: _selectedIndex,
           children: _screens,
         ),
-        bottomNavigationBar: !Responsive.isDesktop(context)
+        bottomNavigationBar: !isDesktop
             ? Padding(
                 padding: const EdgeInsets.only(bottom: 12.0),
                 child: CustomTabBar(

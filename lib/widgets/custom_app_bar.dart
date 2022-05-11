@@ -20,6 +20,7 @@ class CustomAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Size _size = MediaQuery.of(context).size;
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       height: 65,
@@ -36,15 +37,42 @@ class CustomAppBar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const Expanded(
-            child: Text(
-              'facebook',
-              style: TextStyle(
-                color: Palette.facebookBlue,
-                fontSize: 32,
-                fontWeight: FontWeight.bold,
-                letterSpacing: -1.2,
-              ),
+          Expanded(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                const Icon(
+                  MdiIcons.facebook,
+                  size: 50,
+                  color: Palette.facebookBlue,
+                ),
+                const SizedBox(width: 5),
+                Container(
+                  height: 50,
+                  width: 200,
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  decoration: BoxDecoration(
+                    color: const Color.fromARGB(60, 110, 107, 107),
+                    borderRadius: BorderRadius.circular(50),
+                  ),
+                  child: Row(
+                    children: [
+                      const Icon(
+                        Icons.search,
+                        size: 20,
+                      ),
+                      const SizedBox(width: 5),
+                      Text(
+                        'Search on Facebook',
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.grey[600],
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+              ],
             ),
           ),
           SizedBox(
@@ -61,11 +89,26 @@ class CustomAppBar extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                UserCard(user: currentUser),
-                const SizedBox(width: 12),
-                const CircleButton(icon: Icons.search, iconSize: 30),
+                _size.width >= 1360
+                    ? UserCard(user: currentUser)
+                    : ProfileAvatar(imageUrl: currentUser.imageUrl),
+                const SizedBox(width: 10),
                 const CircleButton(
-                    icon: MdiIcons.facebookMessenger, iconSize: 30),
+                  icon: Icons.menu,
+                  iconSize: 30,
+                ),
+                const CircleButton(
+                  icon: MdiIcons.facebookMessenger,
+                  iconSize: 30,
+                ),
+                const CircleButton(
+                  icon: MdiIcons.bell,
+                  iconSize: 30,
+                ),
+                const CircleButton(
+                  icon: MdiIcons.menuDown,
+                  iconSize: 30,
+                ),
               ],
             ),
           ),

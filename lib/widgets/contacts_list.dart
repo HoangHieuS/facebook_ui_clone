@@ -29,6 +29,11 @@ class ContactsList extends StatelessWidget {
                 ),
               ),
               Icon(
+                Icons.video_call,
+                color: Colors.grey[600],
+              ),
+              const SizedBox(width: 8),
+              Icon(
                 Icons.search,
                 color: Colors.grey[600],
               ),
