@@ -52,33 +52,33 @@ class _HomeScreenMobile extends StatelessWidget {
     return CustomScrollView(
       controller: scrollController,
       slivers: [
-        const SliverAppBar(
-          systemOverlayStyle: SystemUiOverlayStyle(
-            statusBarBrightness: Brightness.light,
-          ),
-          backgroundColor: Colors.white,
-          title: Text(
-            'facebook',
-            style: TextStyle(
-              color: Palette.facebookBlue,
-              fontSize: 28,
-              fontWeight: FontWeight.bold,
-              letterSpacing: -1.2,
-            ),
-          ),
-          centerTitle: false,
-          floating: true,
-          actions: [
-            CircleButton(
-              icon: Icons.search,
-              iconSize: 30,
-            ),
-            CircleButton(
-              icon: MdiIcons.facebookMessenger,
-              iconSize: 30,
-            ),
-          ],
-        ),
+        // const SliverAppBar(
+        //   systemOverlayStyle: SystemUiOverlayStyle(
+        //     statusBarBrightness: Brightness.light,
+        //   ),
+        //   backgroundColor: Colors.white,
+        //   title: Text(
+        //     'facebook',
+        //     style: TextStyle(
+        //       color: Palette.facebookBlue,
+        //       fontSize: 28,
+        //       fontWeight: FontWeight.bold,
+        //       letterSpacing: -1.2,
+        //     ),
+        //   ),
+        //   centerTitle: false,
+        //   floating: true,
+        //   actions: [
+        //     CircleButton(
+        //       icon: Icons.search,
+        //       iconSize: 30,
+        //     ),
+        //     CircleButton(
+        //       icon: MdiIcons.facebookMessenger,
+        //       iconSize: 30,
+        //     ),
+        //   ],
+        // ),
         const SliverToBoxAdapter(
           child: CreatePostContainer(currentUser: currentUser),
         ),

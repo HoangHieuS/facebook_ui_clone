@@ -36,18 +36,20 @@ class CustomTabBar extends StatelessWidget {
       ),
       tabs: icons
           .asMap()
-          .map((i, e) => MapEntry(
-                i,
-                Tab(
-                  icon: Icon(
-                    e,
-                    color: i == selectedIndex
-                        ? Palette.facebookBlue
-                        : Colors.black45,
-                    size: 30,
-                  ),
+          .map(
+            (i, e) => MapEntry(
+              i,
+              Tab(
+                icon: Icon(
+                  e,
+                  color: i == selectedIndex
+                      ? Palette.facebookBlue
+                      : Colors.black45,
+                  size: 30,
                 ),
-              ),)
+              ),
+            ),
+          )
           .values
           .toList(),
       onTap: onTap,
