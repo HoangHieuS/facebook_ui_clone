@@ -71,14 +71,6 @@ class _NavScreenState extends State<NavScreen> {
                 index: _selectedIndex,
                 children: _screens,
               ),
-              bottomNavigationBar: Padding(
-                padding: const EdgeInsets.only(bottom: 12.0),
-                child: CustomTabBar(
-                  icons: _icons,
-                  selectedIndex: _selectedIndex,
-                  onTap: (index) => setState(() => _selectedIndex = index),
-                ),
-              ),
             ),
           )
         : DefaultTabController(
