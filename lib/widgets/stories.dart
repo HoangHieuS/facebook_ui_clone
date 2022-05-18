@@ -80,12 +80,13 @@ class _StoryCard extends StatelessWidget {
                     Container(
                       height: 50,
                       width: 110,
-                      decoration: const BoxDecoration(color: Colors.black),
+                      decoration: const BoxDecoration(
+                          color: Color.fromARGB(255, 228, 225, 225)),
                       child: const Center(
                         child: Text(
                           'Add to Story',
                           style: TextStyle(
-                            color: Colors.white,
+                            color: Colors.black,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -103,7 +104,7 @@ class _StoryCard extends StatelessWidget {
                       height: 45,
                       width: 45,
                       decoration: const BoxDecoration(
-                        color: Colors.black,
+                        color: Color.fromARGB(255, 228, 225, 225),
                         shape: BoxShape.circle,
                       ),
                     ),

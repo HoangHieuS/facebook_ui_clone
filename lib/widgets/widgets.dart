@@ -11,4 +11,6 @@ export 'user_card.dart';
 export 'contacts_list.dart';
 export 'more_options_list.dart';
 export 'rounded_button.dart';
+export 'features.dart';
+export 'custom_feature_bar.dart';
 

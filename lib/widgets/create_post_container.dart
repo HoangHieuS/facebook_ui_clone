@@ -103,7 +103,7 @@ class CreatePostContainer extends StatelessWidget {
                         children: const [
                           RoundedButton(
                             icon: MdiIcons.moviePlay,
-                            label: 'Movie',
+                            label: 'Short\nVideo',
                             color: Colors.pinkAccent,
                           ),
                           SizedBox(width: 10),

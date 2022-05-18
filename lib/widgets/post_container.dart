@@ -5,7 +5,7 @@ import 'package:facebook_ui_clone/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-class PostContainer extends StatelessWidget {
+class PostContainer extends StatefulWidget {
   final Post post;
 
   const PostContainer({
@@ -13,6 +13,11 @@ class PostContainer extends StatelessWidget {
     required this.post,
   }) : super(key: key);
 
+  @override
+  State<PostContainer> createState() => _PostContainerState();
+}
+
+class _PostContainerState extends State<PostContainer> {
   @override
   Widget build(BuildContext context) {
     final bool isDesktop = Responsive.isDesktop(context);
@@ -38,24 +43,24 @@ class PostContainer extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  _PostHeader(post: post),
+                  _PostHeader(post: widget.post),
                   const SizedBox(height: 4),
-                  Text(post.caption),
-                  post.imageUrl != ' '
+                  Text(widget.post.caption),
+                  widget.post.imageUrl != ' '
                       ? const SizedBox.shrink()
                       : const SizedBox(height: 6),
                 ],
               ),
             ),
-            post.imageUrl != ' '
+            widget.post.imageUrl != ' '
                 ? Padding(
                     padding: const EdgeInsets.symmetric(vertical: 8.0),
-                    child: CachedNetworkImage(imageUrl: post.imageUrl),
+                    child: CachedNetworkImage(imageUrl: widget.post.imageUrl),
                   )
                 : const SizedBox.shrink(),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12),
-              child: _PostStats(post: post),
+              child: _PostStats(post: widget.post),
             ),
           ],
         ),
@@ -126,6 +131,7 @@ class _PostStats extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool _isLiked = false;
     return Column(
       children: [
         Row(
@@ -172,7 +178,7 @@ class _PostStats extends StatelessWidget {
             _PostButton(
               icon: Icon(
                 MdiIcons.thumbUpOutline,
-                color: Colors.grey[600],
+                color: _isLiked == true ? Colors.blue : Colors.grey[600],
                 size: 20,
               ),
               label: 'Like',

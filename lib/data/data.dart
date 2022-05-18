@@ -31,6 +31,7 @@ const List<User> onlineUsers = [
     name: 'Ed Morris',
     imageUrl:
         'https://images.unsplash.com/photo-1521119989659-a83eee488004?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=664&q=80',
+    isOnlined: false,
   ),
   User(
     name: 'Carolyn Duncan',
@@ -50,6 +51,7 @@ const List<User> onlineUsers = [
     name: 'James Lathrop',
     imageUrl:
         'https://images.unsplash.com/photo-1528892952291-009c663ce843?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=592&q=80',
+    isOnlined: false,
   ),
   User(
     name: 'Jessie Samson',
@@ -65,6 +67,7 @@ const List<User> onlineUsers = [
     name: 'Jane Doe',
     imageUrl:
         'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
+    isOnlined: false,
   ),
   User(
     name: 'Matthew Hinkle',
@@ -85,6 +88,7 @@ const List<User> onlineUsers = [
     name: 'Carolyn Duncan',
     imageUrl:
         'https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
+    isOnlined: false,
   ),
   User(
     name: 'Paul Pinnock',
@@ -99,6 +103,7 @@ const List<User> onlineUsers = [
     name: 'James Lathrop',
     imageUrl:
         'https://images.unsplash.com/photo-1528892952291-009c663ce843?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=592&q=80',
+    isOnlined: false,
   ),
   User(
     name: 'Jessie Samson',
