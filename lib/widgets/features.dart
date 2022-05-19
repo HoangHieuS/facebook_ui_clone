@@ -15,7 +15,7 @@ class _FeaturesState extends State<Features> {
       currentUser: currentUser,
       stories: stories,
     ),
-    Scaffold(),
+    ShortVideos(stories: stories),
     const Rooms(onlineUsers: onlineUsers),
   ];
 

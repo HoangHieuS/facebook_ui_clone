@@ -121,7 +121,7 @@ class _PostHeader extends StatelessWidget {
   }
 }
 
-class _PostStats extends StatelessWidget {
+class _PostStats extends StatefulWidget {
   final Post post;
 
   const _PostStats({
@@ -130,8 +130,14 @@ class _PostStats extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<_PostStats> createState() => _PostStatsState();
+}
+
+class _PostStatsState extends State<_PostStats> {
+  bool isLiked = false;
+
+  @override
   Widget build(BuildContext context) {
-    bool _isLiked = false;
     return Column(
       children: [
         Row(
@@ -151,21 +157,23 @@ class _PostStats extends StatelessWidget {
             const SizedBox(width: 4),
             Expanded(
               child: Text(
-                '${post.likes}',
+                isLiked
+                    ? 'You and ${widget.post.likes} others'
+                    : '${widget.post.likes}',
                 style: TextStyle(
                   color: Colors.grey[600],
                 ),
               ),
             ),
             Text(
-              '${post.comments} Comments',
+              '${widget.post.comments} Comments',
               style: TextStyle(
                 color: Colors.grey[600],
               ),
             ),
             const SizedBox(width: 8),
             Text(
-              '${post.shares} Shares',
+              '${widget.post.shares} Shares',
               style: TextStyle(
                 color: Colors.grey[600],
               ),
@@ -175,15 +183,7 @@ class _PostStats extends StatelessWidget {
         const Divider(),
         Row(
           children: [
-            _PostButton(
-              icon: Icon(
-                MdiIcons.thumbUpOutline,
-                color: _isLiked == true ? Colors.blue : Colors.grey[600],
-                size: 20,
-              ),
-              label: 'Like',
-              onTap: () {},
-            ),
+            likeAction(),
             _PostButton(
               icon: Icon(
                 MdiIcons.commentOutline,
@@ -205,6 +205,22 @@ class _PostStats extends StatelessWidget {
           ],
         ),
       ],
+    );
+  }
+
+  Widget likeAction() {
+    final icon = isLiked ? MdiIcons.thumbUp : MdiIcons.thumbUpOutline;
+    final color = isLiked ? Palette.facebookBlue : Colors.grey[600];
+    return _PostButton(
+      icon: Icon(
+        icon,
+        color: color,
+        size: 20,
+      ),
+      label: 'Like',
+      onTap: () {
+        setState(() => isLiked = !isLiked);
+      },
     );
   }
 }

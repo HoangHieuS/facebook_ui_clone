@@ -8,6 +8,9 @@ class Palette {
   static const LinearGradient createRoomGradient = LinearGradient(
     colors: [Color(0xFF496AE1), Color(0xFFCE48B1)],
   );
+  static const LinearGradient createShortVideoGradient = LinearGradient(
+    colors: [Color(0xFFFEA41A), Color(0xFFFF33B0)],
+  );
   static const LinearGradient moreOptionsGradient = LinearGradient(
     colors: [Color(0xFF7FFFD4), Color(0xFF33CCFF)],
   );

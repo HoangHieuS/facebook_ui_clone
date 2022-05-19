@@ -37,13 +37,13 @@ class CreatePostContainer extends StatelessWidget {
                       borderRadius: BorderRadius.circular(50),
                       color: const Color.fromARGB(60, 110, 107, 107),
                     ),
-                    child: const TextField(
+                    child: TextField(
                       decoration: InputDecoration(
                         isCollapsed: true,
                         border: InputBorder.none,
                         hintText: 'What\'s on your mind?',
                         contentPadding: EdgeInsets.symmetric(
-                          vertical: 10,
+                          vertical: isDesktop ? 15 : 10,
                           horizontal: 10,
                         ),
                       ),

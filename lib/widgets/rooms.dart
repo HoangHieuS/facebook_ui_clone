@@ -26,27 +26,30 @@ class Rooms extends StatelessWidget {
             )
           : null,
       child: Container(
-        height: 200,
-        color:
-            Responsive.isDesktop(context) ? Colors.transparent : Colors.white,
+        height: isDesktop ? 60 : 200,
+        color: isDesktop ? Colors.white :
+             Colors.transparent,
         child: ListView.builder(
-          padding: const EdgeInsets.symmetric(
+          padding: EdgeInsets.symmetric(
             vertical: 10,
-            horizontal: 8,
+            horizontal: isDesktop ? 4 : 8,
           ),
           scrollDirection: Axis.horizontal,
           itemCount: 1 + onlineUsers.length,
           itemBuilder: (BuildContext context, int index) {
             if (index == 0) {
-              return const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 4),
-                child: _CreateRoomButton(),
+              return Padding(
+                padding: EdgeInsets.symmetric(horizontal: isDesktop ? 8 : 4),
+                child: isDesktop ? const _CreateRoomButtonDesktop() : const _CreateRoomButton(),
               );
             }
             final User user = onlineUsers[index - 1];
             return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 4),
-              child: _RoomCard(user: user),
+              padding: EdgeInsets.symmetric(horizontal: isDesktop ? 8 : 4),
+              child: isDesktop ? ProfileAvatar(
+                imageUrl: user.imageUrl,
+                isActive: true,
+              ) :_RoomCard(user: user),
             );
           },
         ),
@@ -238,6 +241,43 @@ class _CreateRoomButton extends StatelessWidget {
               ),
             ),
           ),
+        ],
+      ),
+    );
+  }
+}
+
+class _CreateRoomButtonDesktop extends StatelessWidget {
+  const _CreateRoomButtonDesktop({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return OutlinedButton(
+      onPressed: () {},
+      style: OutlinedButton.styleFrom(
+        primary: Palette.facebookBlue,
+        backgroundColor: Colors.white,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(30),
+        ),
+        side: BorderSide(
+          width: 3,
+          color: Colors.blueAccent.shade100,
+        ),
+      ),
+      child: Row(
+        children: [
+          ShaderMask(
+            shaderCallback: (rect) =>
+                Palette.createRoomGradient.createShader(rect),
+            child: const Icon(
+              Icons.video_call,
+              size: 40,
+              color: Colors.white,
+            ),
+          ),  
+          const SizedBox(width: 4),
+          const Text('Create\nRoom'),
         ],
       ),
     );

@@ -52,7 +52,10 @@ class ContactsList extends StatelessWidget {
                 final User user = users[index];
                 return Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8),
-                  child: UserCard(user: user),
+                  child: UserCard(
+                    user: user,
+                    isActive: true,
+                  ),
                 );
               },
             ),
