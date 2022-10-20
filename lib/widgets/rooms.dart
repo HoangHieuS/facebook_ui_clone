@@ -27,8 +27,7 @@ class Rooms extends StatelessWidget {
           : null,
       child: Container(
         height: isDesktop ? 60 : 200,
-        color: isDesktop ? Colors.white :
-             Colors.transparent,
+        color: isDesktop ? Colors.white : Colors.transparent,
         child: ListView.builder(
           padding: EdgeInsets.symmetric(
             vertical: 10,
@@ -40,16 +39,20 @@ class Rooms extends StatelessWidget {
             if (index == 0) {
               return Padding(
                 padding: EdgeInsets.symmetric(horizontal: isDesktop ? 8 : 4),
-                child: isDesktop ? const _CreateRoomButtonDesktop() : const _CreateRoomButton(),
+                child: isDesktop
+                    ? const _CreateRoomButtonDesktop()
+                    : const _CreateRoomButton(),
               );
             }
             final User user = onlineUsers[index - 1];
             return Padding(
               padding: EdgeInsets.symmetric(horizontal: isDesktop ? 8 : 4),
-              child: isDesktop ? ProfileAvatar(
-                imageUrl: user.imageUrl,
-                isActive: true,
-              ) :_RoomCard(user: user),
+              child: isDesktop
+                  ? ProfileAvatar(
+                      imageUrl: user.imageUrl,
+                      isActive: true,
+                    )
+                  : _RoomCard(user: user),
             );
           },
         ),
@@ -125,7 +128,7 @@ class _RoomCard extends StatelessWidget {
               child: OutlinedButton(
                 onPressed: () {},
                 style: OutlinedButton.styleFrom(
-                  primary: Colors.black,
+                  foregroundColor: Colors.black,
                   backgroundColor: Colors.grey[400],
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(5),
@@ -255,7 +258,7 @@ class _CreateRoomButtonDesktop extends StatelessWidget {
     return OutlinedButton(
       onPressed: () {},
       style: OutlinedButton.styleFrom(
-        primary: Palette.facebookBlue,
+        foregroundColor: Palette.facebookBlue,
         backgroundColor: Colors.white,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30),
@@ -275,7 +278,7 @@ class _CreateRoomButtonDesktop extends StatelessWidget {
               size: 40,
               color: Colors.white,
             ),
-          ),  
+          ),
           const SizedBox(width: 4),
           const Text('Create\nRoom'),
         ],

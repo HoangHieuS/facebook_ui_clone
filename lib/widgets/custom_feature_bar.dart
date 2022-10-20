@@ -15,7 +15,7 @@ class CustomFeatureBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TabBar(
-      labelColor: Color.fromARGB(255, 16, 78, 128),
+      labelColor: const Color.fromARGB(255, 16, 78, 128),
       unselectedLabelColor: Colors.grey,
       labelStyle: const TextStyle(
         fontSize: 16,

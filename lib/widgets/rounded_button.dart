@@ -17,7 +17,7 @@ class RoundedButton extends StatelessWidget {
     return OutlinedButton(
       onPressed: () {},
       style: OutlinedButton.styleFrom(
-        primary: Colors.black38,
+        foregroundColor: Colors.black38,
         backgroundColor: Colors.white,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30),
@@ -25,7 +25,7 @@ class RoundedButton extends StatelessWidget {
       ),
       child: Row(
         children: [
-           Icon(
+          Icon(
             icon,
             size: 30,
             color: color,
